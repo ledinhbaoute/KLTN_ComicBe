@@ -135,7 +135,7 @@ public class PaymentController {
 //                    if (checkOrderStatus) {
             if ("00".equals(requestParams.get("vnp_ResponseCode"))) {
                transactionServiceImple.topUpMoneyToWallet(username,amount/100);
-                response.sendRedirect("http://localhost:3000/wallet/payment-info?vnp_Amount="+amount+"&vnp_TransactionStatus="
+                response.sendRedirect("https://kltn-comic-fe.vercel.app/wallet/payment-info?vnp_Amount="+amount+"&vnp_TransactionStatus="
                         +requestParams.get("vnp_TransactionStatus")+"&vnp_TransactionNo="+requestParams.get("vnp_TransactionNo")+
                         "&vnp_ResponseCode="+requestParams.get("vnp_ResponseCode")+"&vnp_PayDate="+requestParams.get("vnp_PayDate"));
 
@@ -143,7 +143,7 @@ public class PaymentController {
 
 
                 System.out.println("Giao dịch that bai");
-                response.sendRedirect("http://localhost:3000/comic-detail/B_001");
+                response.sendRedirect("https://kltn-comic-fe.vercel.app/wallet");
             }
 //            System.out.print("{\"RspCode\":\"00\",\"Message\":\"Confirm Success\"}");
 //                    } else {
