@@ -11,7 +11,7 @@
     <groupId>vn.hcmute.tlcn</groupId>
     <artifactId>Comic_Web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Comic_Web</name>
     <description>API ComicWeb</description>
     <properties>
