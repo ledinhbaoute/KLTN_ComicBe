@@ -235,7 +235,7 @@ public class ComicServiceImple implements IComicBookService {
         UserPremium userPremium = userPremiumRepo.findOneByUser_UserName(username).orElse(null);
         if (userPremium != null) {
             comicBook.setPremium(true);
-            return new ResponseObject(true, "Upgrade Comic Success!", converter.convertEntityToDto(comicBook));
+            return new ResponseObject(true, "Nâng cấp truyện thành công!", converter.convertEntityToDto(comicBook));
         }
         return new ResponseObject(false, "You need upgrade to Premium Account!", "");
     }
@@ -284,7 +284,7 @@ public class ComicServiceImple implements IComicBookService {
         calendar.add(Calendar.WEEK_OF_YEAR, -1);
         Date oneWeekAgo = calendar.getTime();
 
-        Page<ComicBook> trendingList = historyIncreaseViewRepo.getTrending(oneWeekAgo, currentDate, PageRequest.of(indexPage, 6));
+        Page<ComicBook> trendingList = historyIncreaseViewRepo.getTrending(oneWeekAgo, currentDate, PageRequest.of(indexPage, 12));
         return trendingList.map(converter::convertEntityToDto);
 //        int endIndex = Math.min(trendingList.size(), 10);
 //        return trendingList.subList(0, endIndex).stream().map(c -> converter.convertEntityToDto(c)).toList();
@@ -308,8 +308,8 @@ public class ComicServiceImple implements IComicBookService {
     @Override
     public Page<ComicBookDTO> getComicByGenrePagination(String genreId, int indexPage, String sortBy) {
         if (sortBy == null)
-            return comicBookRepository.findByGenres_Id(genreId, PageRequest.of(indexPage, 6)).map(converter::convertEntityToDto);
-        return comicBookRepository.findByGenres_Id(genreId, PageRequest.of(indexPage, 6, Sort.by(sortBy).descending())).map(converter::convertEntityToDto);
+            return comicBookRepository.findByGenres_Id(genreId, PageRequest.of(indexPage, 8)).map(converter::convertEntityToDto);
+        return comicBookRepository.findByGenres_Id(genreId, PageRequest.of(indexPage, 8, Sort.by(sortBy).descending())).map(converter::convertEntityToDto);
     }
 
     @Override
@@ -319,7 +319,7 @@ public class ComicServiceImple implements IComicBookService {
         calendar.setTime(currentDate);
         calendar.add(Calendar.WEEK_OF_YEAR, -1);
         Date oneWeekAgo = calendar.getTime();
-        return comicBookRepository.findComicsUpdatedWithinOneWeekOrderByUpdateDateDesc(oneWeekAgo,currentDate,PageRequest.of(indexPage,6)).map(converter::convertEntityToDto);
+        return comicBookRepository.findComicsUpdatedWithinOneWeekOrderByUpdateDateDesc(oneWeekAgo,currentDate,PageRequest.of(indexPage,12)).map(converter::convertEntityToDto);
     }
     @Override
     public List<ComicBookDTO>filterSearchComic(List<String> includeGenres, List<String> excludeGenres, int status,int numberChapter){
