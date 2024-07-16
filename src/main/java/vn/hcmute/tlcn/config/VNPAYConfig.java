@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 public class VNPAYConfig {
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8081/api/v1/payment_info";
+    public static String vnp_ReturnUrl = "https://kltncomicbe-production.up.railway.app/api/v1/payment_info";
     public static String vnp_TmnCode = "Q8T3RLQ4";
     public static String vnp_Version = "2.1.0";
     public static String vnp_Command = "pay";
