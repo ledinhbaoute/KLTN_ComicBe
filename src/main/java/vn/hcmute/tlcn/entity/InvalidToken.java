@@ -3,9 +3,11 @@ package vn.hcmute.tlcn.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@Table(name="invalidtoken")
 public class InvalidToken {
     @Id
     private String id;
